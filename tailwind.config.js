@@ -3,7 +3,6 @@ const { myTheme } = require('./src/exponentColors')
 const plugin = require('tailwindcss/plugin')
 const { themeVariants, prefersLowContrast, prefersHighContrast, prefersLight, prefersDark } = require('tailwindcss-theme-variants')
 
-const sweetGray = myTheme.reduce((a, o) => (o.name == 'gray' && a.push(o.name), a), [])
 module.exports = {
   purge: [
     './src/**/*.{js,jsx,ts,tsx}',
@@ -23,6 +22,7 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
 
+      // Prefixed tailwind's color primitives
       black: twcolors.black,
       white: twcolors.white,
       gray: twcolors.coolGray,
@@ -34,8 +34,22 @@ module.exports = {
       purple: twcolors.violet,
       pink: twcolors.pink,
 
-      example: sweetGray.values,
-      // neutral: colors.neutral,
+      // TODO: Thomas, please halp. 👇
+      // The goal is to be able to use the class .example-gray-low-contrast
+      // from exponentColors.js. To do that, we need to have an object that looks like:
+      // {
+      //   gray: {
+      //     'low-contrast': '#cccccc',
+      //     'high-contrast': '#bbbbbb',
+      //     'etc': '#f0f0f0'
+      //   }
+      // }
+      // 
+      // ... however, @adobe leonardo returns a more complicated array / object combo.
+      // See exponentColors.js
+      // 
+      // This line is commented out temporarily since it's wrong and breaks the build
+      // example: gray.values,
     },
     spacing: {
       px: '1px',
@@ -881,7 +895,7 @@ module.exports = {
     }),
     themeVariants({
       group: 'themes',
-      baseSelector: '#app',
+      baseSelector: '.theme',
       themes: {
         'light': {
           selector: '.light',

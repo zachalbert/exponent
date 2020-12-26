@@ -3,20 +3,48 @@ import './App.css';
 function App() {
   // Add [light, light-AAA, dark, dark-AAA] to .App to switch themes
   return (
-    <div className="App dark-AAA" id="app">
-      <h1>Yay</h1>
-      <div>
-        <h2 className="light:text-gray-800 light:bg-gray-100 dark:bg-gray-600 dark:text-gray-200 dark-AAA:text-white dark-AAA:bg-example light-AAA:text-black light-AAA:bg-white">Dark</h2>
+    <div className="App dark" id="app">
+        
+      <div className="theme light">
+        <div className="background py-10 p-6">
+          <div className="card">
+            <h1>Light</h1>
+            <h3>Card Title</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <h2 className="light:text-gray-800 light:bg-gray-100 dark:bg-gray-600 dark:text-gray-200 dark-AAA:text-white dark-AAA:bg-example-high light-AAA:text-black light-AAA:bg-white">Dark AAA</h2>
+
+      <div className="theme light-AAA">
+        <div className="background py-10 p-6">
+          <div className="card">
+            <h1>Light AAA</h1>
+            <h3>Card Title</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <h2 className="light:text-gray-800 light:bg-gray-100 dark:bg-gray-600 dark:text-gray-200 dark-AAA:text-white dark-AAA:bg-example-dark light-AAA:text-black light-AAA:bg-white">Light</h2>
+
+      <div className="theme dark">
+        <div className="background py-10 p-6">
+          <div className="card">
+            <h1>Dark</h1>
+            <h3>Card Title</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <h2 className="light:text-gray-800 light:bg-gray-100 dark:bg-gray-600 dark:text-gray-200 dark-AAA:text-white dark-AAA:bg-example-dark-high light-AAA:text-black light-AAA:bg-white">LightAAA</h2>
+
+      <div className="theme dark-AAA">
+        <div className="background py-10 p-6">
+          <div className="card">
+            <h1>Dark AAA</h1>
+            <h3>Card Title</h3>
+            <p>Lorem ipsum dolor sit amet.</p>
+          </div>
+        </div>
       </div>
+
     </div>
   );
 }
