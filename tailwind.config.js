@@ -1,7 +1,9 @@
-const colors = require('tailwindcss/colors')
+const twcolors = require('tailwindcss/colors')
+const { myTheme } = require('./src/exponentColors')
 const plugin = require('tailwindcss/plugin')
 const { themeVariants, prefersLowContrast, prefersHighContrast, prefersLight, prefersDark } = require('tailwindcss-theme-variants')
 
+const sweetGray = myTheme.reduce((a, o) => (o.name == 'gray' && a.push(o.name), a), [])
 module.exports = {
   purge: [
     './src/**/*.{js,jsx,ts,tsx}',
@@ -21,16 +23,19 @@ module.exports = {
       transparent: 'transparent',
       current: 'currentColor',
 
-      black: colors.black,
-      white: colors.white,
-      gray: colors.coolGray,
-      red: colors.red,
-      yellow: colors.amber,
-      green: colors.emerald,
-      blue: colors.blue,
-      indigo: colors.indigo,
-      purple: colors.violet,
-      pink: colors.pink,
+      black: twcolors.black,
+      white: twcolors.white,
+      gray: twcolors.coolGray,
+      red: twcolors.red,
+      yellow: twcolors.amber,
+      green: twcolors.emerald,
+      blue: twcolors.blue,
+      indigo: twcolors.indigo,
+      purple: twcolors.violet,
+      pink: twcolors.pink,
+
+      example: sweetGray.values,
+      // neutral: colors.neutral,
     },
     spacing: {
       px: '1px',
