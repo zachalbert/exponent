@@ -1,13 +1,36 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* The @layer directive puts these on the same level as @tailwind base, useful for global defaults */
+@layer base {
+  /* Add @font-face declarations here */
+  h1 {
+    /* The usual way */
+    @apply text-blue-500 text-9xl text-center py-12;
+    /* A fancy new way */
+    background: theme('colors.purple.100');
+  }
+
+  h2 {
+    @apply text-6xl;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* The @components layer is useful for extracting component classes with @apply */
+@layer components {
+  .very-sweet-button {
+    @apply py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75;
+  }
+}
+
+/* New utilities are placed alongside tailwind utilities and unused will be purged in prod */
+@layer utilities {
+
+  /* This directive will generate variants for each breakpoint, eg sm:pointer-none, md:pointer-none, etc */
+  @variants responsive {
+    .pointer-none {
+      pointer-events: none;
+    }
+  }
 }
