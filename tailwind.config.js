@@ -2,6 +2,7 @@ const twcolors = require('tailwindcss/colors')
 const { myTheme } = require('./src/exponentColors')
 const plugin = require('tailwindcss/plugin')
 const { themeVariants, prefersLowContrast, prefersHighContrast, prefersLight, prefersDark } = require('tailwindcss-theme-variants')
+const { lightTheme, darkTheme } = require('./src/exponentColors')
 
 module.exports = {
   purge: [
@@ -34,22 +35,9 @@ module.exports = {
       purple: twcolors.violet,
       pink: twcolors.pink,
 
-      // TODO: Thomas, please halp. 👇
-      // The goal is to be able to use the class .example-gray-low-contrast
-      // from exponentColors.js. To do that, we need to have an object that looks like:
-      // {
-      //   gray: {
-      //     'low-contrast': '#cccccc',
-      //     'high-contrast': '#bbbbbb',
-      //     'etc': '#f0f0f0'
-      //   }
-      // }
-      // 
-      // ... however, @adobe leonardo returns a more complicated array / object combo.
-      // See exponentColors.js
-      // 
-      // This line is commented out temporarily since it's wrong and breaks the build
-      // example: gray.values,
+      // Alternative approach:
+      light: lightTheme.light,
+      dark: darkTheme.dark,
     },
     spacing: {
       px: '1px',
@@ -146,6 +134,7 @@ module.exports = {
       2: '2px',
       4: '4px',
       8: '8px',
+      40: '40px',
     },
     boxShadow: {
       sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',

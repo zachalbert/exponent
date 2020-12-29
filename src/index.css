@@ -5,7 +5,7 @@
 /* The @layer directive puts these on the same level as @tailwind base, useful for global defaults */
 @layer base {
   /* Style stacks */
-  .foreground {
+  .tw-foreground {
     @apply 
     
     shadow-md
@@ -28,7 +28,7 @@
     dark-AAA:border-white;
   }
 
-  .background {
+  .tw-background {
     @apply
     
     light:bg-gray-200
@@ -36,7 +36,39 @@
     dark:bg-gray-900
     dark-AAA:bg-black;
   }
-  
+
+  .exponent-foreground {
+    @apply 
+    
+    shadow-md
+    border
+    border-transparent
+
+    light:bg-light-lo-fg
+    light-AAA:bg-light-hi-fg
+    dark:bg-dark-lo-fg
+    dark-AAA:bg-dark-hi-fg
+
+    light:border-transparent
+    light-AAA:border-light-hi-border
+    dark:border-transparent
+    dark-AAA:border-dark-hi-border
+    
+    light:text-light-lo-normal-text
+    light-AAA:text-light-hi-normal-text
+    dark:text-dark-lo-normal-text
+    dark-AAA:text-dark-hi-normal-text;
+  }
+
+  .exponent-background {
+    @apply
+
+    light:bg-light-lo-bg
+    light-AAA:bg-light-hi-bg
+    dark:bg-dark-lo-bg
+    dark-AAA:bg-dark-hi-bg
+  }
+
   html,
   body,
   #root,
@@ -65,9 +97,23 @@
   }
 
   .card {
-    @apply mx-auto py-6 px-4 rounded-lg
-    
-    foreground;
+    @apply mx-auto py-6 px-4 rounded-lg;
+  }
+
+  .card--tw {
+    @apply tw-foreground;
+  }
+
+  .background--tw {
+    @apply tw-background
+  }
+
+  .card--exponent {
+    @apply exponent-foreground;
+  }
+
+  .background--exponent {
+    @apply exponent-background;
   }
 }
 
