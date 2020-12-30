@@ -26,7 +26,7 @@ module.exports = {
       // Prefixed tailwind's color primitives
       black: twcolors.black,
       white: twcolors.white,
-      gray: twcolors.coolGray,
+      gray: twcolors.trueGray,
       red: twcolors.red,
       yellow: twcolors.amber,
       green: twcolors.emerald,
@@ -38,6 +38,7 @@ module.exports = {
       // Alternative approach:
       light: lightTheme.light,
       dark: darkTheme.dark,
+      primary: lightTheme.primary,
     },
     spacing: {
       px: '1px',
@@ -865,23 +866,7 @@ module.exports = {
     zIndex: ['responsive', 'focus-within', 'focus'],
   },
   plugins: [
-    // The following 2 are custom plugins that kinda work... switching to https://github.com/JakeNavith/tailwindcss-theme-variants
-    // Add dark mode high contrast (WCAG AAA compliant) variant
-    plugin( function({ addVariant, e }) {
-      addVariant('dark-AAA', ({ modifySelectors, separator }) => {
-        modifySelectors( ({className}) => {
-          return `.${e(`dark-AAA${separator}${className}`)}`
-        })
-      })
-    }),
-    // Add light mode high contrast (WCAG AAA compliant) variant
-    plugin( function({ addVariant, e }) {
-      addVariant('AAA', ({ modifySelectors, separator }) => {
-        modifySelectors( ({className}) => {
-          return `.${e(`AAA${separator}${className}`)}`
-        })
-      })
-    }),
+    // https://github.com/JakeNavith/tailwindcss-theme-variants
     themeVariants({
       group: 'themes',
       baseSelector: '.theme',

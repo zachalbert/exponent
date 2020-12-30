@@ -4,6 +4,23 @@
 
 /* The @layer directive puts these on the same level as @tailwind base, useful for global defaults */
 @layer base {
+
+  a {
+    @apply text-blue-600 underline transition;
+  }
+
+  a:hover {
+    @apply text-blue-500 no-underline transition;
+  }
+
+  p {
+    @apply mb-4;
+  }
+
+  code {
+    @apply bg-gray-100 rounded-sm py-1 px-2;
+  }
+
   /* Style stacks */
   .tw-foreground {
     @apply 
@@ -14,18 +31,19 @@
 
     light:bg-gray-50 
     light:text-gray-800
+    light:border-transparent
     
     light-AAA:bg-white
-    light-AAA:text-black
-    light-AAA:border-black
+    light-AAA:text-gray-600
+    light-AAA:border-gray-500
 
     dark:bg-gray-800
-    dark:text-gray-100
+    dark:text-gray-400
     dark:border-transparent
 
     dark-AAA:bg-black
-    dark-AAA:text-white
-    dark-AAA:border-white;
+    dark-AAA:text-gray-400
+    dark-AAA:border-gray-500;
   }
 
   .tw-background {
@@ -92,11 +110,7 @@
   }
 
   h1 {
-    /* The usual way */
-    @apply text-4xl;
-
-    /* A fancy new way */
-    /* background: theme('colors.purple.100'); */
+    @apply text-4xl mb-8;
   }
 
   h2 {
@@ -110,8 +124,28 @@
 
 /* The @components layer is useful for extracting component classes with @apply */
 @layer components {
-  .very-sweet-button {
-    @apply py-2 px-4 bg-indigo-500 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-opacity-75;
+  .button {
+    @apply text-white;
+  }
+
+  .button--tw {
+    @apply 
+    
+    light:bg-blue-600
+    dark:bg-blue-600
+
+    light-AAA:bg-blue-800
+    dark-AAA:bg-blue-800;
+  }
+
+  .button--exponent {
+    @apply 
+    
+    light:bg-primary-mid
+    dark:bg-primary-mid
+    
+    light-AAA:bg-primary-hi
+    dark-AAA:bg-primary-hi;
   }
 
   .card {

@@ -26,7 +26,7 @@ let exponentPalette = {
       name: 'dark',
       colorKeys: ['#000000', '#5e6678', '#ffffff'],
       ratios: {
-        'lo-bg': -1.25,
+        'lo-bg': -1.15,
         'hi-bg': -1.25,
 
         // Foreground must always be 1
@@ -37,7 +37,7 @@ let exponentPalette = {
         'hi-border': 4.5,
         
         // Normally, 3, 4.5, and 7 would be fine.
-        // Leonardo seems to have some kind of bug where `3` results in a contrast
+        // Leonardo seems to have some kind of rounding bug where `3` results in a contrast
         // ratio of `2.98`. Optically this should be fine, but will still cause a
         // failure in automated accessibility checkers. Adding `0.04` fixes this.
         'lo-large-text': 3.04,
@@ -48,21 +48,14 @@ let exponentPalette = {
       }
     },
     {
-      name: 'blue',
-      colorKeys: ['#5CDBFF', '#0000FF'],
+      name: 'primary',
+      colorKeys: ['#2563eb'],
       ratios: {
-        'BLUE_LARGE_TEXT': 3,
-        'BLUE_TEXT': 4.5
+        'lo': 3,
+        'mid': 4.5,
+        'hi': 7,
       }
     },
-    {
-      name: 'red',
-      colorKeys: ['#FF9A81', '#FF0000'],
-      ratios: {
-        'RED_LARGE_TEXT': 3,
-        'RED_TEXT': 4.5
-      }
-    }
   ],
   baseScale: 'light',
 };
@@ -93,5 +86,5 @@ const darkTheme = darkPalette.reduce( (acc, item) => {
 
 module.exports = {
   lightTheme,
-  darkTheme
+  darkTheme,
 }
