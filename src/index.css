@@ -69,6 +69,15 @@
     dark-AAA:bg-dark-hi-bg
   }
 
+  .exponent-large-text {
+    @apply
+
+    light:text-light-lo-large-text
+    light-AAA:text-light-hi-large-text
+    dark:text-dark-lo-large-text
+    dark-AAA:text-dark-hi-large-text;
+  }
+
   html,
   body,
   #root,
@@ -78,15 +87,27 @@
 
   /* Add @font-face declarations here */
 
+  h1,
+  h2,
+  h3 {
+    @apply exponent-large-text;
+    /* @apply text-blue-500; */
+  }
+
   h1 {
     /* The usual way */
-    @apply text-3xl;
+    @apply text-4xl;
+
     /* A fancy new way */
     /* background: theme('colors.purple.100'); */
   }
 
   h2 {
-    @apply text-6xl;
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-2xl;
   }
 }
 

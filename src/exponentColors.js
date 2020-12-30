@@ -19,30 +19,32 @@ let exponentPalette = {
         'hi-large-text': 4.5,
         
         'lo-normal-text': 4.5,
-        'hi-normal-text': 7,
+        'hi-normal-text': 7.04,
       }
     },
     {
       name: 'dark',
       colorKeys: ['#000000', '#5e6678', '#ffffff'],
       ratios: {
-        'lo-bg': 1.1,
-        'hi-bg': 1,
+        'lo-bg': -1.25,
+        'hi-bg': -1.25,
 
-        // Any amount over 1.0 must be added to text
-        'lo-fg': 1.5,
+        // Foreground must always be 1
+        'lo-fg': 1,
         'hi-fg': 1,
         
         'lo-border': 3,
         'hi-border': 4.5,
         
-        // Normally, a ratio of 3 would be specified. But since foreground color is
-        // 1.5, we need to add an additional 0.5
-        'lo-large-text': 3.5,
-        'hi-large-text': 5,
+        // Normally, 3, 4.5, and 7 would be fine.
+        // Leonardo seems to have some kind of bug where `3` results in a contrast
+        // ratio of `2.98`. Optically this should be fine, but will still cause a
+        // failure in automated accessibility checkers. Adding `0.04` fixes this.
+        'lo-large-text': 3.04,
+        'hi-large-text': 4.54,
         
-        'lo-normal-text': 5,
-        'hi-normal-text': 7.5,
+        'lo-normal-text': 4.54,
+        'hi-normal-text': 7.04,
       }
     },
     {
@@ -67,8 +69,8 @@ let exponentPalette = {
 
 const generateTheme = generateAdaptiveTheme( exponentPalette )
 
-const lightPalette = generateTheme(97, 1)
-const darkPalette = generateTheme(2, 1.5)
+const lightPalette = generateTheme(100, 1)
+const darkPalette = generateTheme(10, 1)
 
 const lightTheme = lightPalette.reduce( (acc, item) => {
   if( 'name' in item ) {
